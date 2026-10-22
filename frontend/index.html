@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>问卷系统 · 运行检查</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>运行检查</h1>
+    <p><a href="/">返回账号首页</a></p>
+    <p class="intro">问卷系统的最小运行骨架。分别检查后端服务与数据库连接。</p>
+    <section aria-label="服务状态" aria-live="polite">
+      <div class="service">
+        <h2>后端服务</h2>
+        <div><strong id="backend-status" data-state="pending">等待检查</strong>
+          <p id="backend-detail">正在准备请求。</p></div>
+      </div>
+      <div class="service">
+        <h2>MongoDB 数据库</h2>
+        <div><strong id="database-status" data-state="pending">等待检查</strong>
+          <p id="database-detail">只执行真实连接与 ping，不写入业务数据。</p></div>
+      </div>
+    </section>
+    <div class="actions">
+      <button id="recheck" type="button">重新检查</button>
+      <p id="checked-at">尚未完成检查</p>
+    </div>
+    <p class="note">两项检查独立执行。数据库不可达时，页面和后端仍可使用。</p>
+    <noscript>请启用 JavaScript，以获取实时检查结果。</noscript>
+  </main>
+</body>
+</html>

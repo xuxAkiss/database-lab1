@@ -1,0 +1,12 @@
+{
+  "assignment": {
+    "path": "D:\\数据管理\\work1\\大作业一.docx",
+    "sha256": "88af590b01a4265c31b5da1f2d44f0bb833f4d8fa8c0852478963420b9d685ec",
+    "read_method": "word/document.xml paragraphs and tables via zipfile/ElementTree; no visual rendering"
+  },
+  "log": {
+    "path": "D:\\数据管理\\work1\\日志.txt",
+    "sha256": "abf4506673541e68a94193385cf223d201effeece1927f3dd434fe2e40eb3ac5",
+    "usage": "read-only; stage summaries and evidence limitations; prepared prompts not assumed executed"
+  }
+}

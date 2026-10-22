@@ -1,0 +1,32 @@
+test_chain_revoked_independent_source_kept (test_filling_engine.EngineTests.test_chain_revoked_independent_source_kept) ... ok
+test_descendant_with_multiple_parents_survives_one_chain_revocation (test_filling_engine.EngineTests.test_descendant_with_multiple_parents_survives_one_chain_revocation) ... ok
+test_end_required_supplement (test_filling_engine.EngineTests.test_end_required_supplement) ... ok
+test_exact_multiple (test_filling_engine.EngineTests.test_exact_multiple) ... ok
+test_four_type_bounds (test_filling_engine.EngineTests.test_four_type_bounds) ... ok
+test_incomplete_draft_saved_but_next_rejected (test_filling_engine.EngineTests.test_incomplete_draft_saved_but_next_rejected) ... ok
+test_multitarget_continuous (test_filling_engine.EngineTests.test_multitarget_continuous) ... ok
+test_no_client_forged_question_or_option (test_filling_engine.EngineTests.test_no_client_forged_question_or_option) ... ok
+test_normal_optional_order (test_filling_engine.EngineTests.test_normal_optional_order) ... ok
+test_partial_change_revokes_then_new_answer_recalculates (test_filling_engine.EngineTests.test_partial_change_revokes_then_new_answer_recalculates) ... ok
+test_restricted_and_free_navigation (test_filling_engine.EngineTests.test_restricted_and_free_navigation) ... ok
+test_single_target (test_filling_engine.EngineTests.test_single_target) ... ok
+test_visited_not_requeued (test_filling_engine.EngineTests.test_visited_not_requeued) ... ok
+test_blank_title (test_survey_validation.ValidationTests.test_blank_title) ... ok
+test_bool_not_number (test_survey_validation.ValidationTests.test_bool_not_number) ... ok
+test_empty_draft_not_publishable (test_survey_validation.ValidationTests.test_empty_draft_not_publishable) ... ok
+test_exact_excludes_range (test_survey_validation.ValidationTests.test_exact_excludes_range) ... ok
+test_exact_set_and_targets (test_survey_validation.ValidationTests.test_exact_set_and_targets) ... ok
+test_impossible_match_size (test_survey_validation.ValidationTests.test_impossible_match_size) ... ok
+test_min_max (test_survey_validation.ValidationTests.test_min_max) ... ok
+test_no_integer_in_range (test_survey_validation.ValidationTests.test_no_integer_in_range) ... ok
+test_nonfinite (test_survey_validation.ValidationTests.test_nonfinite) ... ok
+test_reorder_keeps_identity_and_reorders_targets (test_survey_validation.ValidationTests.test_reorder_keeps_identity_and_reorders_targets) ... ok
+test_required_zero (test_survey_validation.ValidationTests.test_required_zero) ... ok
+test_touching_numeric_ranges (test_survey_validation.ValidationTests.test_touching_numeric_ranges) ... ok
+test_unique_ids (test_survey_validation.ValidationTests.test_unique_ids) ... ok
+test_wrong_type_constraint (test_survey_validation.ValidationTests.test_wrong_type_constraint) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.006s
+
+OK

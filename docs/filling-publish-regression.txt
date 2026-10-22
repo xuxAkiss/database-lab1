@@ -1,0 +1,8 @@
+PASS ownership, ID tampering, CSRF, unauthenticated and unpublished access
+PASS V1 immutable, unpublished edits isolated, fixed link V2, concurrent/idempotent publication
+PASS concurrent saves return one success and one conflict
+PASS invalid publication leaves V2 intact; self/cycle/reference/duplicate/mixed/overlap validation
+PASS real transaction rollback after version insert (no public fault endpoint)
+PASS field-specific errors, stale unpublished revision rejection, deadline preserved on publication, state revision conflict
+PASS close, publication preserves closed, deadline/reopen, auth and health regression
+RETAINED TEST RUN qa_survey_f68621b82b SURVEY 6ad873de278da8f53be56201 SHARE /s/elR6sUFeBfSgeakxdGUSluu5-OBCzPj1

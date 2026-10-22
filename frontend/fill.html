@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>填写问卷</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/static/surveys.css"><link rel="stylesheet" href="/static/fill.css"><script defer src="/static/fill.js"></script></head><body><main>
+<header><h1>填写问卷</h1><a href="/">登录 / 账号</a><a href="/manage">我的问卷</a></header>
+<p id="message" role="status">正在恢复填写状态…</p><p id="save-status" aria-live="polite"></p>
+<button id="reload">重新读取当前版本</button><button id="retry-submit" hidden>重试上次未确认的提交</button>
+<details id="unsaved" hidden><summary>尚未确认保存的本地输入（刷新前请复制）</summary><textarea id="unsaved-value" readonly></textarea></details>
+<div id="body" hidden><h2 id="title"></h2><p id="description"></p><p id="version"></p><p id="policy"></p><button id="start" hidden>开始本版填写</button><button id="restart" hidden>开始下一次空白填写</button>
+<div id="old-drafts"></div><section id="form" hidden><p id="progress"></p><div id="question"></div><p id="validation" role="status"></p><div class="actions"><button id="save">立即保存</button><button id="next">下一题</button><button id="finish">前往提交检查</button><button id="submit" hidden>确认提交答卷</button></div><h3>已访问题目 / 补答入口</h3><div id="navigation"></div></section><section id="readonly" hidden></section></div>
+</main></body></html>

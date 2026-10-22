@@ -1,0 +1,11 @@
+2026-10-21 actual observations
+Python compileall backend: success
+Unit tests: 27 passed
+pip check: No broken requirements found.
+MongoDB original project process: Start.ps1 reported Already running PID 27276, ping=1, version=8.3.11, work1DevRs PRIMARY.
+Application new stderr: server PID 30888 listening http://127.0.0.1:8000.
+Final integration health: live=ok database=ok.
+Browser QA database read: historical submissions=2; answers by sequence=[2,0].
+Git: not a git repository; no commit/init performed.
+Total log SHA256 before/after: ABF4506673541E68A94193385CF223D201EFFEECE1927F3DD434FE2E40EB3AC5 (unchanged).
+No dependencies installed this turn; no MongoDB config or data reset.

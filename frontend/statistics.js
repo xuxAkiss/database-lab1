@@ -1,0 +1,12 @@
+'use strict';
+const $=s=>document.querySelector(s), sid=location.pathname.split('/').pop();
+let snapshot, busy=false;
+function el(tag,text,parent){const n=document.createElement(tag);n.textContent=text;parent.append(n);return n;}
+async function get(path){const r=await fetch(path,{credentials:'same-origin',signal:AbortSignal.timeout(15000)});const d=await r.json();if(!r.ok)throw Error(d.message||'读取失败');return d;}
+function render(qs){const box=$('#results');box.replaceChildren();for(const q of qs){const card=el('article','',box);el('h2',q.title,card);el('p',`本题回答人数：${q.answered_count}`,card);if(q.options){const table=el('table','',card);const head=el('tr','',table);el('th','选项',head);el('th',q.type==='single'?'选择人数':'选择次数',head);for(const o of q.options){const row=el('tr','',table);el('td',o.label,row);el('td',String(o.count),row);}}else{if(q.type==='number')el('p',`有效数字回答数：${q.valid_count}；平均值：${q.average===null?'无数据':q.average}`,card);if(!q.values.length)el('p','暂无填写内容',card);else{const list=el('ul','',card);q.values.forEach(v=>el('li',String(v),list));}}}}
+async function task(fn){if(busy)return;busy=true;$('#refresh').disabled=true;$('#question').disabled=true;try{await fn();$('#message').textContent='读取成功。仅统计该版本每个账号最新成功提交；不混入草稿或旧版，最新留空不回填。';}catch(e){$('#message').textContent=e.message;$('#results').replaceChildren();$('#summary').replaceChildren();}finally{busy=false;$('#refresh').disabled=false;$('#question').disabled=false;}}
+function renderSummary(data){$('#summary').replaceChildren();el('h2',`${data.title} · V${data.version_number}`,$('#summary'));el('p',`本版本成功提交总次数：${data.submission_count}；参与账号数：${data.participant_count}`,$('#summary'));el('p','下方每题只取各账号最新答卷。填写内容逐题独立排列，不提供身份或跨题对应关系。',$('#summary'));}
+async function refresh(){snapshot=await get(`/api/surveys/${encodeURIComponent(sid)}/statistics`);renderSummary(snapshot);const select=$('#question');select.replaceChildren();el('option','整卷',select).value='';for(const q of snapshot.questions)el('option',q.title,select).value=q.question_id;render(snapshot.questions);}
+$('#refresh').onclick=()=>task(refresh);
+$('#question').onchange=()=>task(async()=>{if(!$('#question').value){renderSummary(snapshot);render(snapshot.questions);return;}const d=await get(`/api/surveys/${encodeURIComponent(sid)}/versions/${snapshot.version_id}/statistics/questions/${encodeURIComponent($('#question').value)}`);renderSummary(d);render(d.questions);});
+task(refresh);

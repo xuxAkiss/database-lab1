@@ -1,0 +1,11 @@
+RUN qa_stats_1fb2366868
+Traceback (most recent call last):
+  File "D:\数据管理\work1\workspace\tests\check_statistics.py", line 74, in <module>
+    empty=stats();assert (empty['submission_count'],empty['participant_count'])==(0,0)
+  File "D:\数据管理\work1\workspace\tests\check_statistics.py", line 59, in stats
+    def stats():return a.call(root+'/statistics')
+                       ~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\数据管理\work1\workspace\tests\check_statistics.py", line 38, in call
+    if code is not None:assert r.status==code,(path,r.status,result,code)
+                               ^^^^^^^^^^^^^^
+AssertionError: ('/api/surveys/6ad87d05278da8f53be56264/statistics', 404, {'detail': 'Not Found'}, 200)

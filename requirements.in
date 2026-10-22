@@ -1,0 +1,6 @@
+# Direct runtime dependencies; requirements.txt pins the verified full environment.
+fastapi==0.156.4
+uvicorn==0.54.0
+pymongo==4.19.0
+python-dotenv==1.2.4
+argon2-cffi==25.1.0

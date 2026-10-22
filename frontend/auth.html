@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>问卷系统 · 账号</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/auth.css">
+  <script src="/static/auth.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="account-header"><h1>问卷系统</h1><a href="/health">运行检查</a></header>
+    <p class="intro">登录你的账号，开始使用。</p>
+    <p id="message" role="status" aria-live="polite">正在检查登录状态…</p>
+    <div id="signed-out" hidden>
+      <nav class="tabs" aria-label="账号操作">
+        <button type="button" id="show-login" aria-pressed="true">登录</button>
+        <button type="button" id="show-register" aria-pressed="false">注册新账号</button>
+      </nav>
+      <form id="login-form">
+        <h2>登录</h2>
+        <label for="login-username">用户名</label>
+        <input id="login-username" name="username" required maxlength="128" autocomplete="username" autocapitalize="none" spellcheck="false">
+        <label for="login-password">密码</label>
+        <input id="login-password" name="password" type="password" required minlength="12" maxlength="128" autocomplete="current-password">
+        <button type="submit">登录账号</button>
+      </form>
+      <form id="register-form" hidden>
+        <h2>注册</h2>
+        <label for="register-username">用户名</label>
+        <input id="register-username" name="username" required maxlength="128" autocomplete="username" autocapitalize="none" spellcheck="false" aria-describedby="username-help">
+        <p id="username-help" class="field-help">3–32 位字母、数字或下划线；自动去除首尾空白并转为小写。</p>
+        <label for="register-password">密码</label>
+        <input id="register-password" name="password" type="password" required minlength="12" maxlength="128" autocomplete="new-password" aria-describedby="password-help">
+        <p id="password-help" class="field-help">12–128 个字符，建议使用较长且不重复的密码。</p>
+        <button type="submit">创建账号</button>
+      </form>
+    </div>
+    <section id="signed-in" hidden aria-label="登录后首页">
+      <h2>已登录</h2>
+      <p class="welcome">欢迎，<strong id="current-username"></strong></p>
+      <p>你的身份由服务器会话确认。</p><p><a href="/manage">管理我的问卷</a></p>
+      <button type="button" id="logout">退出登录</button>
+    </section>
+    <button type="button" id="refresh-session" class="secondary">重新检查登录状态</button>
+    <noscript>请启用 JavaScript 以注册或登录。</noscript>
+  </main>
+</body>
+</html>
