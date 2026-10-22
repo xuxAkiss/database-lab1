@@ -70,4 +70,4 @@ SESSION_TTL_SECONDS=28800
 
 交付采用docs/baseline-manifest.json列出的文件及该清单本身；包含源码、固定依赖、示例配置、脚本、文档/截图。不交付.venv/.local/.env/凭据/运行数据/缓存；不删除这些本地文件。清单重建：`.\.venv\Scripts\python.exe dev\make_manifest.py`。第二阶段沿此基线增量演进。
 
-2026-10-22 上传整理：已按用户要求建立 Git 仓库；2026-10-21 报告中的“无 Git 仓库”是当时状态。完整开发提示词与结果记录见 [AI 开发日志](docs/ai-development-log.txt)，其中待发送和未独立核实状态保留原说明。课程平台另需提交 PDF 报告，并在报告最前面放仓库链接；仓库内 Markdown 报告不等于已完成平台 PDF 提交。
+
