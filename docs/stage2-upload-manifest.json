@@ -18,8 +18,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "a96daba3d304a5e593e137e7e5c8e9b5cba281d400de7679d7a765027ec38cad",
-      "bytes": 8107
+      "sha256": "c953d8fda2686661088455ee4b87ae499add921c10fe6572dfbd603d5d2dc1da",
+      "bytes": 8003
     },
     {
       "path": "backend/__init__.py",
