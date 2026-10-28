@@ -7,8 +7,6 @@
 
 第二阶段在第一阶段代码上增量实现，包含题库、题目版本、共享及跨问卷统计。
 
-- [最终报告 PDF](docs/reports/2026_ECNU_PJ1_2_徐健.pdf)
-- [可编辑报告 Markdown](docs/reports/2026_ECNU_PJ1_2_徐健.md)
 - [完整开发提示词与结果日志](docs/ai-development-log-stage2.txt)
 - [需求覆盖](docs/stage2-final-coverage.md)与[测试记录](docs/stage2-final-tests.md)
 
@@ -30,7 +28,6 @@ Set-Location -LiteralPath 'D:\数据管理\work1\workspace'
 if (-not (Test-Path -LiteralPath '.env')) { Copy-Item -LiteralPath '.env.example' -Destination '.env' }
 .\.venv\Scripts\python.exe -m pip check
 ```
-
 已有环境直接使用。首次安装需网络。不同机器需安装自己的Python/MongoDB并审阅配置路径；没有将本机安装程序打包进源码。
 
 ## 数据库与应用启动
