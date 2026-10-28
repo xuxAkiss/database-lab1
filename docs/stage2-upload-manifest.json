@@ -18,8 +18,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "9748e0782ffba1cd7210f3fa02094264e30011e259899320ec86dd8c807245d4",
-      "bytes": 8416
+      "sha256": "a96daba3d304a5e593e137e7e5c8e9b5cba281d400de7679d7a765027ec38cad",
+      "bytes": 8107
     },
     {
       "path": "backend/__init__.py",
@@ -193,8 +193,8 @@
     },
     {
       "path": "docs/ai-usage.md",
-      "sha256": "3b2100e7fac9c895b35065e68ac60a1e354c8c7431ac65575fd502376c3a243a",
-      "bytes": 4538
+      "sha256": "2fe6645a3881a064d5bbe2fb1ceef923b3da12caac16443232e15094a18e940e",
+      "bytes": 4421
     },
     {
       "path": "docs/api.md",
@@ -806,5 +806,6 @@
       "sha256": "8cde2bf893d7441936997362b52a80c603b57fb8dc50d6be31fdec0530535ec2",
       "bytes": 2773
     }
-  ]
+  ],
+  "note": "Includes preserved remote README and AI-use edits; older manifests remain historical snapshots."
 }
