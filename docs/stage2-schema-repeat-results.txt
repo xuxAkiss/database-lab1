@@ -1,0 +1,4 @@
+VALIDATED questions 6
+VALIDATED question_versions 28
+VALIDATED question_banks 3
+PASS additive schema/index installation; no legacy collection validator changed

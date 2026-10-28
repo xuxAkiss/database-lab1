@@ -23,3 +23,8 @@
 |GET /api/health/live、/database|独立存活、真实只读 ping|
 
 统计返回 survey_id/version_id/version_number/title/anonymous/submission_count/participant_count/questions；每题 question_id/title/type/answered_count。选择题 options=[{id,label,count}]；填空 values；数字另有 valid_count/average(null表示无数据)。没有填写者、会话、参与状态、答卷标识、提交时间或序号。问卷/题目结构 ID 不属于用户身份字段。未发布整卷统计409，错误版本或题目404；关闭/到期不限制创建者读取统计。
+
+
+## 第二阶段最终增量说明
+
+原说明保留。题库/不可变题版本/共享见 [stage2-system.md](stage2-system.md)；跨问卷统计的系统、MongoDB索引与schema兼容、配置、API、快照聚合与权限见 [stage2-final-statistics.md](stage2-final-statistics.md)。最终需求覆盖及真实验收见 [stage2-final-coverage.md](stage2-final-coverage.md) 和 [stage2-final-tests.md](stage2-final-tests.md)。

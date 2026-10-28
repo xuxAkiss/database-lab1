@@ -1,0 +1,35 @@
+{
+  "run": "qa_cross_ui_6632e4cf",
+  "browser": "Microsoft Edge via Playwright 1.64.1",
+  "reason": "Browser plugin not available",
+  "viewports": [
+    [
+      1280,
+      900
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "page_errors": [],
+  "console_messages": [
+    "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+  ],
+  "question_id": "6adb245049fae31bf22b4f2e",
+  "question_versions": [
+    "6adb245049fae31bf22b4f2f",
+    "6adb245249fae31bf22b4f41"
+  ],
+  "surveys": [
+    {
+      "label": "qa_cross_ui_6632e4cf A",
+      "share": "/s/pbD0BXloVLOYPZFTyzHYU0_gblKyxJMR"
+    },
+    {
+      "label": "qa_cross_ui_6632e4cf B",
+      "share": "/s/Fccva0rzNucw3uFUJmMD4WJi3-vlL5Nq"
+    }
+  ],
+  "result": "PASS"
+}

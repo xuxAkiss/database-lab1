@@ -1,0 +1,5 @@
+PASS UI create independent numeric question
+PASS UI reuse two surveys/publish/fill/current stats [0,8] average4
+PASS UI history replaces A V2, current avg9 -> historical avg4
+PASS UI question-version switch isolates V2 average20
+PASS UI page identity/nonblank/no runtime error/mobile no horizontal overflow

@@ -12,6 +12,8 @@ from fastapi.staticfiles import StaticFiles
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 
+from backend.questions import router as questions_router
+from backend.question_statistics import router as question_statistics_router
 from backend.config import ROOT, read_settings
 from backend.statistics import router as statistics_router
 from backend.filling import router as filling_router
@@ -58,6 +60,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="问卷系统 · 账号与会话", lifespan=lifespan)
+app.include_router(questions_router)
+app.include_router(question_statistics_router)
 app.include_router(auth_router)
 app.include_router(survey_router)
 app.include_router(filling_router)
@@ -83,7 +87,7 @@ async def auth_error(request, error):
 
 @app.exception_handler(RequestValidationError)
 async def invalid_input(request, error):
-    if request.url.path.startswith(('/api/surveys', '/api/shared', '/api/fill')):
+    if request.url.path.startswith(('/api/surveys', '/api/shared', '/api/fill', '/api/questions', '/api/question-banks', '/api/question-statistics')):
         errors = [{'field': '.'.join(str(v) for v in e['loc']), 'message': e['msg']}
                   for e in error.errors()]
         return JSONResponse({'status': 'error', 'code': 'invalid_input',
@@ -147,6 +151,16 @@ def index():
 @app.get("/health", include_in_schema=False)
 def health_page():
     return FileResponse(ROOT / "frontend" / "index.html", headers=HEADERS)
+
+
+@app.get('/question-statistics/{qid}', include_in_schema=False)
+def question_statistics_page(qid: str):
+    return FileResponse(ROOT / 'frontend' / 'question-statistics.html', headers=HEADERS)
+
+
+@app.get('/library', include_in_schema=False)
+def library_page():
+    return FileResponse(ROOT / 'frontend' / 'library.html', headers=HEADERS)
 
 
 @app.get('/manage', include_in_schema=False)

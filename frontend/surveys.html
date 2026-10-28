@@ -1,5 +1,5 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>我的问卷</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/static/surveys.css"><script defer src="/static/surveys.js"></script></head><body><main>
-<header><h1>我的问卷</h1><a href="/">账号首页</a><a href="/health">运行检查</a></header>
+<header><h1>我的问卷</h1><a href="/">账号首页</a><a href="/library">题目与题库</a><a href="/health">运行检查</a></header>
 <p id="message" role="status">正在读取账号…</p><div id="workspace" hidden>
 <section><h2>管理列表</h2><form id="create"><label>新问卷标题<input name="title" required maxlength="200"></label><button>创建问卷</button></form><button id="refresh" type="button">刷新列表</button><div id="list"></div></section>
 <section id="editor" hidden><h2>编辑稿</h2><p id="metadata"></p><p><a id="share" target="_blank" rel="noopener">打开固定分享链接（填写）</a></p>
@@ -7,7 +7,7 @@
 <label>标题<input id="title" maxlength="200" required></label><label>说明<textarea id="description" maxlength="5000"></textarea></label>
 <label><input type="checkbox" id="anonymous">匿名填写（仍须登录）</label><label><input type="checkbox" id="allow_repeat">允许同版重复填写</label>
 <p>保存仅更新编辑稿；发布明确修订才切换原分享链接。规则按当前发布版本在填写时执行。</p>
-<div id="questions"></div><div class="actions"><button data-add="single">添加单选题</button><button data-add="multiple">添加多选题</button><button data-add="text">添加文本题</button><button data-add="number">添加数字题</button></div>
+<section><h3>从题库选择固定版本</h3><button id="load-library">加载可用题目</button><select id="bank-filter"></select><select id="library-question"></select><select id="library-version"></select><button id="import-question">加入本卷</button><p>换版保留实例 ID 和本卷跳转，保存时检查失效关系。题库更新不会自动替换。</p></section><div id="questions"></div><div class="actions"><button data-add="single">添加单选题</button><button data-add="multiple">添加多选题</button><button data-add="text">添加文本题</button><button data-add="number">添加数字题</button></div>
 <div class="actions"><button id="save">保存编辑稿</button><button id="publish">发布已保存修订</button><button id="reload">重新打开编辑稿</button></div>
 <h3>运行状态</h3><label>截止时间（本机时区；留空表示不限）<input id="deadline" type="datetime-local"></label><div class="actions"><button id="set-deadline">设置或清除截止</button><button id="close">关闭问卷</button><button id="reopen">重开问卷</button></div>
 <h3>已发布版本</h3><div id="versions"></div></section></div></main></body></html>

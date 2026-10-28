@@ -1,0 +1,10 @@
+RUN qa_stage2_d4659b0d19
+PASS S01 independent question, bank create/list/rename/member and ownership/CAS
+PASS S02 two owners/two surveys fixed same version; original filling submission
+PASS S03 branches/restore/derivation, coexistence, old publication+submission byte semantics unchanged; S04 privacy categories/version filter
+PASS S05 six concurrent version creations retained; concurrent survey edit CAS
+PASS S06 foreign jump targets/source forgery/changed option references rejected; local target valid
+PASS S07 revoke blocks access/new reference/derivation, preserves saved instance and publication; removal preserves history
+PASS S08 final immutable old publication and submission
+RETAINED qa_stage2_d4659b0d19 QUESTION 6adb218149fae31bf22b4e6f SURVEYS 6adb218149fae31bf22b4e72 6adb218149fae31bf22b4e73
+PASS S09 explicit legacy export atomic/replayable, original publication untouched, private legacy origin hidden from recipient

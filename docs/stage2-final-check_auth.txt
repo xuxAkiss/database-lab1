@@ -1,0 +1,10 @@
+PASS unauthenticated protected request rejected
+PASS CSRF missing-token, cross-origin and missing-origin rejected
+PASS server validation and no password echo
+PASS two registrations, normalized uniqueness and Argon2id storage
+PASS correct/wrong passwords, two isolated identities, rotation and ignored userId
+PASS logout deletes only caller session; old cookie rejected, other account remains logged in
+PASS explicitly expired QA session rejected without waiting for TTL cleanup
+PASS health regressions and user/session indexes
+TEST_RUN=qa_auth_20261023_0c66e4
+Retained labeled QA accounts: qa_auth_20261023_0c66e4_a, qa_auth_20261023_0c66e4_b

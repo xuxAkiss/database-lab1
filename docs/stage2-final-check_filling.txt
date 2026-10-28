@@ -1,0 +1,16 @@
+START TEST_RUN qa_fill_32883bbda4
+PASS four input types, incomplete autosave/recovery, backend boundaries, privacy, two independent histories/latest reference, consumed-attempt rejection, idempotency
+PASS concurrent draft CAS: one save succeeds, one conflicts
+PASS no-repeat concurrent submissions: only one successful history
+PASS concurrent same-key requests return one identical result
+PASS actual MongoDB transaction failure rolls back history, participation, draft consumption and survey coordination
+PASS stale save cannot revive consumed draft; competing current-revision navigation/submission serialize
+PASS controlled real transaction order (second transaction observed stale snapshot): submit before publish
+PASS controlled real transaction order (second transaction observed stale snapshot): publish before submit
+PASS controlled real transaction order (second transaction observed stale snapshot): submit before close
+PASS controlled real transaction order (second transaction observed stale snapshot): close before submit
+PASS expired submission rejected; same-version deadline recovery preserves original draft
+PASS real end-action submission validation and restricted required-question supplement
+PASS close pauses saves; same-version reopen restores the exact original draft
+TEST_RUN qa_fill_32883bbda4
+BROWSER_SHARE /s/9WveBQTQoA4BLPJRhTY6VSsGvgiOPBRF

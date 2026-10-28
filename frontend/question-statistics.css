@@ -1,0 +1,8 @@
+/* Scoped to cross-survey reporting; leave original editor/filling styles unchanged. */
+#message{position:static}
+table{border-collapse:collapse;min-width:240px;max-width:100%;margin:12px 0}
+th,td{border:1px solid #c6d4df;padding:10px 16px;text-align:left}
+th{background:#e2edf5}
+#summary p,#included p{overflow-wrap:anywhere}
+#scope label select{display:block;margin-top:6px;width:100%}
+#page{flex:1;min-width:160px}

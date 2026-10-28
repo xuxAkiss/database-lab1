@@ -1,0 +1,19 @@
+RUN qa_cross_60b0c5d44a
+EXPECTED C01 no answers: count=0, average=null, rows=[]
+PASS C01 empty numeric result
+EXPECTED C02 A alpha:10 then 0, A beta:4, B alpha:8 => [0,4,8], count=3, avg=4, frequencies 1 each
+ACTUAL C02 {"question_id": "6adb1ede49fae31bf22b4e1c", "question_version_id": "6adb1ede49fae31bf22b4e1d", "question_version_number": 1, "title": "qa_cross_60b0c5d44a age", "type": "number", "included_survey_count": 2, "included": [{"survey_id": "6adb1ede49fae31bf22b4e24", "survey_title": "qa_cross_60b0c5d44a A", "survey_version_id": "6adb1ede49fae31bf22b4e25", "survey_version_number": 1, "selection": "current", "instance_id": "n", "available_instance_ids": ["n"], "instance_notice": "", "latest_submission_count": 2, "answered_count": 2, "empty_count": 0, "invalid_count": 0}, {"survey_id": "6adb1ede49fae31bf22b4e26", "survey_title": "qa_cross_60b0c5d44a B", "survey_version_id": "6adb1ede49fae31bf22b4e27", "survey_version_number": 1, "selection": "current", "instance_id": "n", "available_instance_ids": ["n"], "instance_notice": "", "latest_submission_count": 1, "answered_count": 1, "empty_count": 0, "invalid_count": 0}], "excluded": [], "latest_submission_count": 3, "answered_count": 3, "empty_count": 0, "invalid_count": 0, "computed_at": "2026-10-23T08:46:24.020233+00:00", "scope": "仅本人问卷；每卷选定发布版每账号最新整份成功提交；跨卷不去重；每卷一个题实例；空白不回填。", "page": 1, "page_size": 50, "limits": {"surveys": 200, "publications": 1000, "latest_submissions": 10000, "text_characters": 2000000}, "average": 4.0, "distribution_total": 3, "rows_total": 3, "page_count": 1, "rows": [{"value": 0.0, "count": 1}, {"value": 4.0, "count": 1}, {"value": 8.0, "count": 1}]}
+PASS C02 latest whole submission, zero valid, cross-survey account NOT deduplicated
+EXPECTED C03 single counts yes=2 no=1; multi yes=2 no=2; text beta,gamma,new
+PASS C03 all four types and pagination retains full totals
+EXPECTED C04 latest A alpha blank => [4,8], avg=6, empty=1; draft 99 ignored
+PASS C04 latest blank no backfill, drafts excluded
+EXPECTED C05 default [100,8] avg54; A historical replaces current => [4,8] avg6
+PASS C05 current/history publication replacement
+PASS C06 question versions/restoration/same-name/derivation/unknown legacy separated
+PASS C07 duplicate instances explicitly selected, never double counted
+PASS C08 ownership, forged publication/source rejection, share is NOT stats grant, revoked own snapshots, anonymous key audit
+PASS C09 closed and expired still included
+PASS C10 real concurrent publish+submit between reads: snapshot avg2, next HTTP query avg9
+PASS C11 explicit limit rejects entire result, no partial totals
+PASS ALL CROSS TESTS qa_cross_60b0c5d44a

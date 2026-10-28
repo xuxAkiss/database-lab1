@@ -1,6 +1,18 @@
-# MongoDB 问卷系统 · 第一阶段
+# MongoDB 问卷系统 · 第一阶段与第二阶段
 
 代码仓库：https://github.com/xuxAkiss/database-lab1
+
+
+## 第二阶段提交材料
+
+第二阶段在第一阶段代码上增量实现，包含题库、题目版本、共享及跨问卷统计。
+
+- [最终报告 PDF](docs/reports/2026_ECNU_PJ1_2_徐健.pdf)
+- [可编辑报告 Markdown](docs/reports/2026_ECNU_PJ1_2_徐健.md)
+- [完整开发提示词与结果日志](docs/ai-development-log-stage2.txt)
+- [需求覆盖](docs/stage2-final-coverage.md)与[测试记录](docs/stage2-final-tests.md)
+
+下方及历史报告中的“未推送”“跨卷统计延期”等表述是当轮记录，当前功能见“第二阶段完整实现与验收”。第一阶段及022原始证据和清单继续保留；本次上传清单另存 `docs/stage2-upload-manifest.json`。数据库文件、虚拟环境和真实配置不交付。课程平台仍需单独提交 PDF。
 
 首次获取：`git clone https://github.com/xuxAkiss/database-lab1.git`，然后 `cd database-lab1`。下文 `D:\数据管理\work1\workspace` 是原开发目录，克隆后请使用自己的仓库目录；Python 路径也应替换为本机解释器。数据库启动脚本中的安装路径见 `dev/mongodb/Common.ps1`，默认使用 `D:\Mongodb\bin`，其他机器应先按实际安装位置调整。
 
@@ -71,3 +83,23 @@ SESSION_TTL_SECONDS=28800
 交付采用docs/baseline-manifest.json列出的文件及该清单本身；包含源码、固定依赖、示例配置、脚本、文档/截图。不交付.venv/.local/.env/凭据/运行数据/缓存；不删除这些本地文件。清单重建：`.\.venv\Scripts\python.exe dev\make_manifest.py`。第二阶段沿此基线增量演进。
 
 2026-10-22 上传整理：已按用户要求建立 Git 仓库；2026-10-21 报告中的“无 Git 仓库”是当时状态。完整开发提示词与结果记录见 [AI 开发日志](docs/ai-development-log.txt)，其中待发送和未独立核实状态保留原说明。课程平台另需提交 PDF 报告，并在报告最前面放仓库链接；仓库内 Markdown 报告不等于已完成平台 PDF 提交。
+
+## 第二阶段第一个功能块
+独立题目、不可变版本/分支/恢复、题库、指定账号共享与撤销、原问卷固定版本选题及使用查询已实现。入口 `/library`；原 `/manage` 保留。跨问卷统计延期。
+
+配置与依赖沿用上文。安装新增 MongoDB schema/索引：`.\.venv\Scripts\python.exe dev/stage2_schema.py`，可重复执行，不清库。
+
+[第二阶段报告](docs/stage2-report.md) · [演进记录](docs/stage2-evolution.md) · [系统/数据库/API/逻辑](docs/stage2-system.md) · [测试与需求覆盖](docs/stage2-tests.md) · [真实 AI 日志草稿](docs/stage2-ai-log-draft.md)。
+
+专项复测：`.\.venv\Scripts\python.exe tests/check_stage2.py`；旧数据核验：`.\.venv\Scripts\python.exe tests/check_stage2_baseline.py`。阶段二交付另见 docs/stage2-manifest.json，阶段一清单和证据保留。未提交或推送 GitHub。
+
+## 第二阶段完整实现与验收
+跨问卷题目统计已在022基础上实现，上文“延期”描述022当时范围。先登录，进入 `/library` 选题版本，点击“统计我拥有的问卷中的此题版本”；也可在原 `/manage` 已引用题实例上点击跨卷统计链接。题库共享撤销后，该问卷实例入口仍可查询自己的快照统计。
+
+口径：精确题目版本，只本人问卷，默认每卷当前发布、可用一个历史版替换。每卷取每账号最新成功整份提交，跨卷不去重，最新空白不回填；重复实例默认首个可切换。数字含频数和均值，详情分页，总计不受页数影响。范围超限明确报错，不静默截断。
+
+[完整报告](docs/stage2-report.md) · [教师需求覆盖](docs/stage2-final-coverage.md) · [跨卷API/数据库索引/关键逻辑/限制](docs/stage2-final-statistics.md) · [整体验收与复现](docs/stage2-final-tests.md) · [本轮AI日志草稿](docs/stage2-final-ai-log-draft.md) · [改动摘要](docs/stage2-final-changes.md)。
+
+运行时依赖和.env不变。新增索引由原SurveyStore自动幂等安装；022集合schema仍使用dev/stage2_schema.py。浏览器测试可选依赖只在项目.venv安装：`.\.venv\Scripts\python.exe -m pip install -r requirements-test.txt`，使用本机Microsoft Edge。
+
+本轮复现：`tests/check_cross_statistics.py`（真实HTTP/MongoDB）、`tests/check_cross_browser.py`（浏览器）、`tests/check_final_integrity.py`（保留数据库的双基线只读核验），均用项目.venv Python运行。完整本地交付清单为docs/stage2-final-manifest.json；第一阶段与022旧清单保留，不用旧清单代替当前交付。

@@ -1,0 +1,8 @@
+fill_drafts 83 original records checked
+submissions 64 original records checked
+surveys 78 original records checked
+users 36 original records checked
+survey_edits 78 original records checked
+survey_versions 103 original records checked
+participations 83 original records checked
+PASS all original non-session records retained and hashes unchanged

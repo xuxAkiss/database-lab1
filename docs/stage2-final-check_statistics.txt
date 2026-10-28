@@ -1,0 +1,11 @@
+RUN qa_stats_ee770e1d62
+PASS no submissions: all zero, numeric average null
+EXPECTED total=3 participants=2 single=[1,0]/1 multi=[1,2]/2 text=[beta] numbers=[0,4] avg=2
+ACTUAL {"survey_id": "6adb218449fae31bf22b4e92", "version_id": "6adb218449fae31bf22b4e98", "version_number": 2, "title": "qa_stats_ee770e1d62", "anonymous": true, "submission_count": 3, "participant_count": 2, "questions": [{"question_id": "s", "title": "单选", "type": "single", "answered_count": 1, "options": [{"id": "A", "label": "A", "count": 1}, {"id": "B", "label": "B", "count": 0}]}, {"question_id": "m", "title": "多选", "type": "multiple", "answered_count": 2, "options": [{"id": "A", "label": "A", "count": 1}, {"id": "B", "label": "B", "count": 2}]}, {"question_id": "t", "title": "文字", "type": "text", "answered_count": 1, "values": ["beta"]}, {"question_id": "n", "title": "数字", "type": "number", "answered_count": 2, "values": [0.0, 4.0], "valid_count": 2, "average": 2.0}]}
+PASS pending draft unchanged; old-version 999 and superseded 88 excluded; latest blanks do not backfill
+PASS whole/single equivalence, anonymous response key audit, two-account ownership and tampered survey/version/question IDs
+PASS closed/expired statistics remain readable
+PASS V3 numeric zero plus blank => valid_count=1 average=0; V2 records excluded
+PASS pinned V2 single-question remains V2 after current pointer moves to V3
+PASS health ok ok
+SURVEY 6adb218449fae31bf22b4e92 SHARE /s/epzmKilYriX2_xbsuVuVjbYBsV97xicN

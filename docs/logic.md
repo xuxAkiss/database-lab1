@@ -16,3 +16,8 @@
 校验：单选合法ID，多选禁止重复/伪造并检查数量；文本去明确 Unicode White_Space 后数码点；数字合法十进制/科学计数法、有限值、上下界与整数。非必答空白跳过最小限制，不把空数字当0。未完整但形状合法的输入可存草稿；前进和提交才执行相应完整性校验。
 
 历史修订：早期“覆盖旧答卷”已被用户撤销，现为每次成功提交追加独立历史；多选“禁止同时命中”已被完全匹配规则产生升序目标列表替代。不能把这些修订说成最初方案或教师确认的具体实现。现行统计在版本内取账号最新整份答卷，空白不回填。
+
+
+## 第二阶段最终增量说明
+
+原说明保留。题库/不可变题版本/共享见 [stage2-system.md](stage2-system.md)；跨问卷统计的系统、MongoDB索引与schema兼容、配置、API、快照聚合与权限见 [stage2-final-statistics.md](stage2-final-statistics.md)。最终需求覆盖及真实验收见 [stage2-final-coverage.md](stage2-final-coverage.md) 和 [stage2-final-tests.md](stage2-final-tests.md)。

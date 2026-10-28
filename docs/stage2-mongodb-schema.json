@@ -1,0 +1,178 @@
+{
+  "questions": {
+    "bsonType": "object",
+    "required": [
+      "_id",
+      "owner_id",
+      "shared_with",
+      "number",
+      "created_at"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "owner_id": {
+        "bsonType": "objectId"
+      },
+      "shared_with": {
+        "bsonType": "array",
+        "uniqueItems": true,
+        "items": {
+          "bsonType": "objectId"
+        }
+      },
+      "number": {
+        "bsonType": [
+          "int",
+          "long"
+        ],
+        "minimum": 1
+      },
+      "created_at": {
+        "bsonType": "date"
+      },
+      "access_fence": {
+        "bsonType": [
+          "int",
+          "long"
+        ]
+      }
+    }
+  },
+  "question_versions": {
+    "bsonType": "object",
+    "required": [
+      "_id",
+      "question_id",
+      "number",
+      "definition",
+      "created_at"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "question_id": {
+        "bsonType": "objectId"
+      },
+      "number": {
+        "bsonType": [
+          "int",
+          "long"
+        ],
+        "minimum": 1
+      },
+      "definition": {
+        "bsonType": "object",
+        "required": [
+          "type",
+          "title",
+          "options",
+          "required"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "single",
+              "multiple",
+              "text",
+              "number"
+            ]
+          },
+          "title": {
+            "bsonType": "string",
+            "minLength": 1
+          },
+          "required": {
+            "bsonType": "bool"
+          },
+          "options": {
+            "bsonType": "array"
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "id"
+              ]
+            },
+            {
+              "required": [
+                "rules"
+              ]
+            },
+            {
+              "required": [
+                "source"
+              ]
+            }
+          ]
+        }
+      },
+      "parent_version_id": {
+        "bsonType": [
+          "string",
+          "null"
+        ]
+      },
+      "restore_version_id": {
+        "bsonType": [
+          "string",
+          "null"
+        ]
+      },
+      "derived_from": {
+        "bsonType": [
+          "object",
+          "null"
+        ]
+      },
+      "legacy_origin": {
+        "bsonType": "object"
+      },
+      "created_at": {
+        "bsonType": "date"
+      }
+    }
+  },
+  "question_banks": {
+    "bsonType": "object",
+    "required": [
+      "_id",
+      "owner_id",
+      "name",
+      "question_ids",
+      "revision"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "owner_id": {
+        "bsonType": "objectId"
+      },
+      "name": {
+        "bsonType": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "question_ids": {
+        "bsonType": "array",
+        "uniqueItems": true,
+        "items": {
+          "bsonType": "string",
+          "pattern": "^[0-9a-f]{24}$"
+        }
+      },
+      "revision": {
+        "bsonType": [
+          "int",
+          "long"
+        ],
+        "minimum": 1
+      }
+    }
+  }
+}

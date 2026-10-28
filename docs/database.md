@@ -32,3 +32,8 @@
 在只读 snapshot 事务中：读取自己拥有的 surveys → 固定版本 → 读取属于该问卷的版本 → submissions 按 survey_id/version_id 匹配 → facet 一支 count 全部成功提交，另一支按 user_id 升序/sequence 降序排序并 group user_id 取 first answers，随后投影掉 user_id。Python 按该版本每题汇总已选最新答案。先选整份最新答卷，再逐题过滤空值，不能先过滤非空再选最新。
 
 每题有效非空答案复用填写校验。单选计人数、多选计选择次数；文本独立排序保留原文；数字转有限值后用 Decimal 求平均再返回浮点数，避免直接浮点累加溢出。零有效记录平均值 null。没有百分比。两次独立请求之间数据可更新；单次请求内总数/参与数/题目均来自同一快照。单题 API 必须再次验证所有权及版本属于该问卷，不提供历史切换界面。
+
+
+## 第二阶段最终增量说明
+
+原说明保留。题库/不可变题版本/共享见 [stage2-system.md](stage2-system.md)；跨问卷统计的系统、MongoDB索引与schema兼容、配置、API、快照聚合与权限见 [stage2-final-statistics.md](stage2-final-statistics.md)。最终需求覆盖及真实验收见 [stage2-final-coverage.md](stage2-final-coverage.md) 和 [stage2-final-tests.md](stage2-final-tests.md)。

@@ -68,6 +68,7 @@ class SurveyStore:
                     self.db[name].create_index([('survey_id', 1), ('version_id', 1), ('user_id', 1)], unique=True)
                 self.db.submissions.create_index([('version_id', 1), ('user_id', 1), ('sequence', 1)], unique=True)
                 self.db.submissions.create_index([('version_id', 1), ('user_id', 1), ('request_key', 1)], unique=True)
+                self.db.submissions.create_index([('survey_id', 1), ('version_id', 1), ('user_id', 1), ('sequence', -1)], name='cross_statistics_latest')
                 self.ready = True
 
     def owned(self, sid, user, session=None):
@@ -89,6 +90,8 @@ class SurveyStore:
              'state_revision': 1, 'created_at': utcnow()}
         e = {'_id': sid, 'owner_id': user['_id'], 'revision': 1, 'structure': data, 'updated_at': utcnow()}
         def create_tx(session):
+            from backend.questions import verify_sources
+            verify_sources(self, data, user, session=session)
             self.db.surveys.insert_one(s.copy(), session=session)
             self.db.survey_edits.insert_one(e.copy(), session=session)
         self.transaction(create_tx)
@@ -150,11 +153,17 @@ def get_edit(sid: str, user=Depends(require_user), store=Depends(get_store)):
 def save(sid: str, body: Save, user=Depends(require_mutating_user), store=Depends(get_store)):
     s = store.owned(sid, user)
     data = validate_structure(body.structure)
-    e = store.db.survey_edits.find_one_and_update({'_id': s['_id'], 'revision': body.revision},
-           {'$set': {'structure': data, 'updated_at': utcnow()}, '$inc': {'revision': 1}}, return_document=ReturnDocument.AFTER)
-    if not e:
-        fail(409, 'edit_conflict', '其他窗口已保存，请先复制当前内容，再重新打开合并修改。')
-    return {'revision': e['revision'], 'structure': e['structure']}
+    def tx(session):
+        from backend.questions import verify_sources
+        prior = store.db.survey_edits.find_one({'_id': s['_id'], 'revision': body.revision}, session=session)
+        if not prior:
+            fail(409, 'edit_conflict', '其他窗口已保存，请重新打开合并修改。')
+        verify_sources(store, data, user, prior['structure'], session)
+        e = store.db.survey_edits.find_one_and_update({'_id': s['_id'], 'revision': body.revision},
+            {'$set': {'structure': data, 'updated_at': utcnow()}, '$inc': {'revision': 1}},
+            session=session, return_document=ReturnDocument.AFTER)
+        return {'revision': e['revision'], 'structure': e['structure']}
+    return store.transaction(tx)
 
 
 @router.post('/surveys/{sid}/publish')

@@ -19,7 +19,12 @@ class Rule(Model):
     action: Literal['targets', 'end'] = 'targets'
     targets: list[str] = Field(default_factory=list, max_length=100)
 
+class QuestionSource(Model):
+    question_id: str = Field(pattern=r'^[0-9a-f]{24}$')
+    version_id: str = Field(pattern=r'^[0-9a-f]{24}$')
+
 class Question(Model):
+    source: QuestionSource | None = None
     id: str = Field(pattern=r'^[A-Za-z0-9_-]{1,64}$')
     type: Literal['single', 'multiple', 'text', 'number']
     title: str = Field(min_length=1, max_length=300)
@@ -169,4 +174,8 @@ def validate_structure(structure, publishing=False):
         done.add(qid)
     for qid in ids:
         visit(qid)
-    return s.model_dump()
+    result = s.model_dump()
+    for q in result['questions']:
+        if q.get('source') is None:
+            q.pop('source', None)
+    return result

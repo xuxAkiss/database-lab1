@@ -29,3 +29,8 @@ Python/FastAPI 同步接口 + PyMongo + MongoDB 单节点开发复制集；Uvico
 实现默认值：用户名 NFKC/小写化 3–32 字符；密码12–128字符；8小时绝对会话；同源 Origin + CSRF；无自动规则时自由导航；可选空白不受最小限制；数字使用有限 IEEE-754 数值；文本按码点去除明确 White_Space 集后计数；关闭暂停草稿修改但允许读取；统计不展示百分比。详见各模块文档。
 
 限制：本地开发配置不构成公网安全部署；没有账号限流、分页统计、导出、复杂图表或未知第二阶段功能。大规模统计受 MongoDB 聚合内存/文档大小和接口超时限制，未做容量压力验证。
+
+
+## 第二阶段最终增量说明
+
+原说明保留。题库/不可变题版本/共享见 [stage2-system.md](stage2-system.md)；跨问卷统计的系统、MongoDB索引与schema兼容、配置、API、快照聚合与权限见 [stage2-final-statistics.md](stage2-final-statistics.md)。最终需求覆盖及真实验收见 [stage2-final-coverage.md](stage2-final-coverage.md) 和 [stage2-final-tests.md](stage2-final-tests.md)。
